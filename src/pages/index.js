@@ -1,20 +1,32 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import { graphql, useStaticQuery } from "gatsby"
+import Img from "gatsby-image"
+
+const Image = () => {
+  const data = useStaticQuery(graphql`
+      query {
+          placeholderImage: file(relativePath: { eq: "gray_rect.png" }) {
+              childImageSharp {
+                  fluid(maxWidth: 738) {
+                      ...GatsbyImageSharpFluid
+                  }
+              }
+          }
+      }
+  `)
+
+  return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+}
 
 const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
+  <Layout pageType="homepage">
+    <SEO title="Interactive Signalling" />
+    <div className="home-image">
+        <Image/>
     </div>
-    <Link to="/page-2/">Go to page 2</Link>
   </Layout>
 )
 
