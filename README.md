@@ -1,3 +1,3 @@
 # Interactive Signalling
 
-https://interactivesignalling.netlify.com/
+https://interactive-signalling.netlify.com/
