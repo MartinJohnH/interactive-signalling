@@ -5,4 +5,4 @@ title: "Ariana Hipsagh"
 featuredImage: "Ah.png"
 link: https://github.com/MartinJohnH
 ---
-Third year undergraduate student at Concordia University Computation Art with a focus on Game Design and 3D animation.
+Third year undergraduate student at Concordia University Computation Arts with a focus on Game Design and 3D animation.
