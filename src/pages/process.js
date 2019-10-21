@@ -14,7 +14,7 @@ const Process = ({ data }) => (
             <AniLink key={index} className="card" paintDrip to={`/process/${edge.node.frontmatter.date}`} hex="#7a03ff" duration={0.8}>
                 <div className="date">
                     <div className="purple-line"/>
-                    <h4>{edge.node.frontmatter.title}</h4>
+                    <h4 className="date-text">{edge.node.frontmatter.title}</h4>
                     <div className="purple-line"/>
                 </div>
                 <Img className="post-image" fluid={edge.node.frontmatter.featuredImage.childImageSharp.fluid} />

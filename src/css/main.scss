@@ -1,6 +1,5 @@
 $green-color: #08e192;
-$purple-color: rgba(44, 48, 203, 0.89);
-$purple-color2: rgba(44, 48, 203, 0.4);
+$purple-color: #7a03ff;
 $dark-grey: #222222;
 
 $sm-viewport: 576px;
@@ -209,7 +208,7 @@ $xl-viewport: 1200px;
         text-orientation: sideways;
         margin-right: 10px;
 
-        h4 {
+        .date-text {
             color: $purple-color;
             display: inline-block;
             margin: 5px 0;
@@ -253,7 +252,7 @@ $xl-viewport: 1200px;
 
     &:hover {
         transform: translate(-20px, 0);
-        box-shadow: 8px 8px 20px 0 $purple-color2;
+        box-shadow: 8px 8px 20px 0 rgba(121,3,255,0.3);
         cursor: pointer;
     }
     &:hover .more{

@@ -53,7 +53,7 @@ const Team = () => (
               <div className="post-text">
                 <h3>{edge.node.frontmatter.title}</h3>
                 <p>{edge.node.excerpt}</p>
-                <span className="more">link</span>
+                <span className="more">{console.log(edge.node.frontmatter)}</span>
               </div>
             </a>
           )}
