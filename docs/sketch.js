@@ -1,4 +1,3 @@
-import WebSessionCounter from 'web-session-counter';
 
 let data = [];
 let parsedData = Array(72).fill(0);
