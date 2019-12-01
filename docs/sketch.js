@@ -1,10 +1,12 @@
+import WebSessionCounter from 'web-session-counter';
+
 let data = [];
-let parsedData;
+let parsedData = Array(72).fill(0);
 
 let cols = 72;
 let rows = 36;
 
-let mockData = ["e60000ffffe2e25010", "8740de6940d31c01bb", "6715dcaf12d3ac1e57", "06ae1a400040280000", "450000ed0800435083", "80784ff3529e00000a", "7429eb9ec6a2c6c895", "30486d0dff60c13742", "4fe314f4890ef24821", "8f65696334063a924d"];
+WebSessionCounter.update();
 
 
 function hex2bin(hex){
@@ -45,7 +47,8 @@ function setup() {
     noLoop();
     createCanvas(windowWidth, windowHeight);
     background(255);
-    setTimeout(getNewData, 1000);
+    getNewData();
+    console.log(WebSessionCounter.count);
     //parsedData = Object.keys(data).map(function(_) { return data[_]; });
 }
 
@@ -63,62 +66,58 @@ function setup() {
 //     //console.log(text.match(/(?<=\<h1>).*(?=\<\/h1>)/));
 //     console.log(text);
 // })();
-let xhr = new XMLHttpRequest;
-//Call the open function, GET-type of request, url, true-asynchronous
-xhr.open('GET', 'https://cors-anywhere.herokuapp.com/http://5.45.79.15/input/?', true)
-//call the onload
-xhr.onload = function()
-{
-    //check if the status is 200(means everything is okay)
-    if (this.status === 200)
-    {
-        //return server response as an object with JSON.parse
-        console.log(this.responseText);
-    }
-};
-//call send
-xhr.send();
+// let xhr = new XMLHttpRequest;
+// //Call the open function, GET-type of request, url, true-asynchronous
+// xhr.open('GET', 'https://cors-anywhere.herokuapp.com/http://5.45.79.15/input/?', true)
+// //call the onload
+// xhr.onload = function()
+// {
+//     //check if the status is 200(means everything is okay)
+//     if (this.status === 200)
+//     {
+//         //return server response as an object with JSON.parse
+//         console.log(this.responseText);
+//     }
+// };
+// //call send
+// xhr.send();
 
+
+let index = 0;
 
 function getNewData() {
     loadJSON('output.json', function (response) {
         data = Array.from(response.results);
-        //console.log("yaaasasssss");
-        setTimeout(updateMatrix, 1000);
+        //console.log(data);
+        index = 0;
+        setTimeout(updateMatrix, 500);
     });
-    setTimeout(getNewData, 10000);
+    //setTimeout(getNewData, 72000);
 }
 
-let k = 2;
 let signal = 0;
 function updateMatrix() {
+    parsedData.unshift(data[index%72]);
+    parsedData.pop();
+    index++;
     //console.log(data[2]);
-    signal = data[2];
-    let pastCol = 0;
-    for (let i = 0; i < data.length; ++i){
-        for (let j = 0; j< data.length; ++j){
-            let x = j * (width/data.length);
+    for (let i = 0; i < parsedData.length; ++i){
+        for (let j = 0; j< parsedData.length; ++j){
+            let x = j * (width/parsedData.length);
             let y = i * (height/36);
 
             //console.log(i +  ", " + j);
             noStroke();
-            //stroke(0,0,0);
-
-            if(i !== pastCol && signal >= 0){
+            if(parsedData[j] !== 0 && i > Math.floor((36 - parsedData[j])/2) && i-(Math.floor((36 - parsedData[j])/2)) < parsedData[j]){
                 fill(20);
                 signal--;
             }else{
-                fill(240);
+                Math.floor(Math.random()*4) === 0 ? fill(20) : fill(240);
             }
-            if(pastCol !== i){
-                pastCol = i;
-            }
-            //data.charAt(j) === '0' ? fill(20) : fill(240);
-            //fill(255);
-            rect(x,y, (width/data.length), (height/36));
+            rect(x,y, (width/parsedData.length), (height/36));
         }
     }
-    //setTimeout(updateMatrix, 1000);
+    setTimeout(updateMatrix, 500);
 }
 
 function draw(){
