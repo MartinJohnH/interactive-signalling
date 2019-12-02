@@ -35,6 +35,7 @@ function writeUserData(data) {
 function getNewData() {
     ref.on('value', function(data){
         console.log(data.val());
+        data = Array.from(data.val());
         index = 0;
         updateMatrix();
     }, function (errorObject) {
