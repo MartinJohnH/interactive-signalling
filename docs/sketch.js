@@ -1,5 +1,5 @@
 
-let numOfUsers = 0;
+// let numOfUsers = 0;
 
 let data = [];
 let parsedData = new Array(144);
@@ -9,12 +9,36 @@ let rows = 0;
 let index = 0;
 let signal = 0;
 
+let numOfUsers = 0;
 let selectedColour = "#F2F2F2";
+
+var n = localStorage.getItem('on_load_counter');
+
+if (n === null) {
+    n = 0;
+    console.log("new user");
+    var totalVisitors = ref.child('numOfUsers');
+    totalVisitors.once('value', function (snapshot) {
+        totalVisitors.set(snapshot.val() + 1);
+    });
+}
+n++;
+localStorage.setItem("on_load_counter", n);
 
 function setup() {
     noLoop();
     createCanvas(windowWidth, windowHeight);
     background(255);
+    ref.on('value', function(dataCallback){
+        console.log(dataCallback.val());
+        numOfUsers = dataCallback.val().numOfUsers;
+        if(cols < 144){
+            cols = 4 * numOfUsers;
+            rows = 4 * numOfUsers;
+        }
+    }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+    });
     getNewData();
 }
 
@@ -30,7 +54,7 @@ function writeUserData(data) {
 //         writeUserData(data);
 //     });
 //
-// }, 72000);
+// }, 1000);
 
 function getNewData() {
     ref.on('value', function(dataCallback){
@@ -56,8 +80,8 @@ function inputColour(event){
     });
 }
 
-
 function newUser(event){
+
     numOfUsers++;
     if(cols < 144){
         cols = 4 * numOfUsers;
