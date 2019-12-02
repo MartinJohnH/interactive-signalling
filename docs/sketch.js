@@ -2,6 +2,9 @@
 let data = [];
 let parsedData = new Array(144);
 
+let sounds = [];
+let soundFiles = ["low1", "low2", "low3", "mid1", "mid2", "mid3", "high1", "high2", "high3"];
+
 let cols = 0;
 let rows = 0;
 let index = 0;
@@ -35,6 +38,12 @@ window.addEventListener(eventName, function(e) {
     });
 });
 
+function preload() {
+    for(let i =0; i< 9; ++i){
+        sounds[i] =loadSound(`sounds/${soundFiles[i]}.wav`);
+    }
+}
+
 function setup() {
     noLoop();
     createCanvas(windowWidth, windowHeight);
@@ -46,6 +55,7 @@ function setup() {
             cols = 4 * numOfUsers;
             rows = 4 * numOfUsers;
         }
+        sounds[numOfUsers%9].loop();
     }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
     });
