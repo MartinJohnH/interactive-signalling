@@ -37,10 +37,10 @@ function getNewData() {
         console.log(dataCallback.val());
         data = dataCallback.val().results;
         index = 0;
-        updateMatrix();
     }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
     });
+    updateMatrix();
 }
 
 
