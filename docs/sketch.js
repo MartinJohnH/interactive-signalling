@@ -25,7 +25,10 @@ totalVisitors.once('value', function (snapshot) {
 });
 
 
-window.addEventListener('beforeunload', function(e) {
+let isOnIOS = navigator.userAgent.match(/iPad/i)|| navigator.userAgent.match(/iPhone/i);
+let eventName = isOnIOS ? "pagehide" : "beforeunload";
+
+window.addEventListener(eventName, function(e) {
     let totalVisitors2 = ref.child('numOfUsers');
     totalVisitors2.once('value', function (snapshot) {
         totalVisitors2.set(snapshot.val() - 1);
