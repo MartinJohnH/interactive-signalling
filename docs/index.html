@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="main.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
-<!--    <script data-main="scripts/main" src="require.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
 </head>
 <body>
 <div class="colour-picker-container">
@@ -12,17 +11,6 @@
     <input class="colour-picker" type="color" id="head" name="head"
            value="" onchange="inputColour(this)">
 </div>
-<!--    <iframe src="http://5.45.79.15/input/?"></iframe>-->
-<!-- <?php
-    include('simple_html_dom.php');
-    //$html = file_get_html('http://5.45.79.15/input/?');
-    $context = stream_context_create(array(
-        'http' => array('ignore_errors' => true),
-    ));
-
-    $result = file_get_contents('http://5.45.79.15/input/?', false, $context);
-    echo $result;
-?> -->
 
 <!--   The core Firebase JS SDK is always required and must be listed first-->
 <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>

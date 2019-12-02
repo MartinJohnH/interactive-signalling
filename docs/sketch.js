@@ -1,6 +1,4 @@
 
-// let numOfUsers = 0;
-
 let data = [];
 let parsedData = new Array(144);
 
@@ -17,13 +15,22 @@ var n = localStorage.getItem('on_load_counter');
 if (n === null) {
     n = 0;
     console.log("new user");
-    var totalVisitors = ref.child('numOfUsers');
-    totalVisitors.once('value', function (snapshot) {
-        totalVisitors.set(snapshot.val() + 1);
-    });
 }
 n++;
 localStorage.setItem("on_load_counter", n);
+
+var totalVisitors = ref.child('numOfUsers');
+totalVisitors.once('value', function (snapshot) {
+    totalVisitors.set(snapshot.val() + 1);
+});
+
+
+window.addEventListener('beforeunload', function(e) {
+    let totalVisitors2 = ref.child('numOfUsers');
+    totalVisitors2.once('value', function (snapshot) {
+        totalVisitors2.set(snapshot.val() - 1);
+    });
+});
 
 function setup() {
     noLoop();
@@ -80,16 +87,6 @@ function inputColour(event){
     });
 }
 
-function newUser(event){
-
-    numOfUsers++;
-    if(cols < 144){
-        cols = 4 * numOfUsers;
-        rows = 4 * numOfUsers;
-    }
-}
-
-
 function updateMatrix() {
     parsedData.unshift(data[index%cols]);
     //parsedData.pop();
@@ -123,10 +120,6 @@ function updateMatrix() {
             //noFill();
             rect(x,y, (width/cols), (height/rows));
             //ellipse(x, y, (width/cols), (height/rows));
-            // for (let i = 0; i < 10; i ++) {
-            //     ellipse(x, y, (width/cols), (height/rows));
-            //     //rotate(PI/5);
-            // }
 
         }
     }
