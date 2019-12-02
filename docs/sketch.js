@@ -22,15 +22,15 @@ function writeUserData(data) {
     ref.update({'results': data });
 }
 
-let timer = setInterval(function(){
-    console.log("new data");
-    loadJSON('./inputData/output.json', function (response) {
-        data = Array.from(response.results);
-        //console.log(data);
-        writeUserData(data);
-    });
-
-}, 72000);
+// let timer = setInterval(function(){
+//     console.log("new data");
+//     loadJSON('./inputData/output.json', function (response) {
+//         data = Array.from(response.results);
+//         //console.log(data);
+//         writeUserData(data);
+//     });
+//
+// }, 72000);
 
 function getNewData() {
     ref.on('value', function(data){
