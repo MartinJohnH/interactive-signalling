@@ -1,3 +1,22 @@
 body{
   margin: 0;
 }
+
+.colour-picker-label{
+  font-size: 3em;
+  font-family: sans-serif;
+  text-align: center;
+  margin-right: 20px;
+}
+
+.colour-picker-container {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.colour-picker {
+  width: 4em;
+  height: 3em;
+}
