@@ -35,7 +35,7 @@ function writeUserData(data) {
 function getNewData() {
     ref.on('value', function(dataCallback){
         console.log(dataCallback.val());
-        data = Array.from(dataCallback.val());
+        data = dataCallback.val().results;
         index = 0;
         updateMatrix();
     }, function (errorObject) {
