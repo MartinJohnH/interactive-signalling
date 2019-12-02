@@ -15,28 +15,31 @@ function setup() {
     noLoop();
     createCanvas(windowWidth, windowHeight);
     background(255);
-    setTimeout(getNewData, 10);
+    getNewData();
 }
 
 function writeUserData(data) {
     ref.update({'results': data });
 }
 
-function getNewData() {
+let timer = setInterval(function(){
+    console.log("new data");
     loadJSON('./inputData/output.json', function (response) {
         data = Array.from(response.results);
         //console.log(data);
         writeUserData(data);
-       // setTimeout(updateMatrix, 1000);
     });
+
+}, 72000);
+
+function getNewData() {
     ref.on('value', function(data){
         console.log(data.val());
         index = 0;
-        setTimeout(updateMatrix, 1000);
+        updateMatrix();
     }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
     });
-    setTimeout(getNewData, 72000);
 }
 
 
@@ -73,7 +76,7 @@ function updateMatrix() {
                     // fill(240,240,240, 100);
                 }else{
                     //stroke(0,0,0, 245);
-                   // fill(240,240,240, 100);
+                    // fill(240,240,240, 100);
                     stroke(255);
                     fill(selectedColour + 50);
                 }
