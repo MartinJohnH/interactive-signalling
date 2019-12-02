@@ -47,7 +47,15 @@ function getNewData() {
 function inputColour(event){
     selectedColour = event.value;
     parsedData[0] = rows+1;
+    ref.update({'colour': event.value });
+    ref.on('value', function(dataCallback){
+        // console.log(dataCallback.val().colour);
+        selectedColour = dataCallback.val().colour;
+    }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+    });
 }
+
 
 function newUser(event){
     numOfUsers++;
