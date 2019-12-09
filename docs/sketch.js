@@ -47,7 +47,7 @@ window.addEventListener(eventName, function(e) {
 function setup() {
     noLoop();
     createCanvas(windowWidth, windowHeight);
-    background(0);
+    background(20);
     ref.on('value', function(dataCallback){
         console.log(dataCallback.val());
         numOfUsers = dataCallback.val().numOfUsers;
@@ -126,7 +126,7 @@ function updateMatrix() {
                 signal--;
             }else{
                 Math.floor(Math.random()*4) === 0 ? stroke(10) : stroke(20);
-                Math.floor(Math.random()*4) === 0 ? noFill() : fill(20,20,20, 150);
+                Math.floor(Math.random()*4) === 0 ? fill(20,20,20) : fill(20,20,20, 150);
             }
             //stroke(153);
             noStroke();
