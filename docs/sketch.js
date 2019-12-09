@@ -111,7 +111,7 @@ function updateMatrix() {
             //console.log(i +  ", " + j);
             //noStroke();
             //noFill();
-            fill(240,240,240, 150);
+            fill(20,20,20, 150);
             if((parsedData[j]) !== 0 && i > Math.floor((rows - (parsedData[j]))/2) && i-(Math.floor((rows - (parsedData[j]))/2)) < (parsedData[j])){
                 //console.log(parsedData[j]);
                 if(parsedData[j] === rows+1){
@@ -120,13 +120,13 @@ function updateMatrix() {
                 }else{
                     //stroke(0,0,0, 245);
                     // fill(240,240,240, 100);
-                    stroke(255);
+                    stroke(20);
                     fill(selectedColour + 50);
                 }
                 signal--;
             }else{
-                Math.floor(Math.random()*4) === 0 ? stroke(230) : stroke(240);
-                Math.floor(Math.random()*4) === 0 ? noFill() : fill(240,240,240, 150);
+                Math.floor(Math.random()*4) === 0 ? stroke(10) : stroke(20);
+                Math.floor(Math.random()*4) === 0 ? noFill() : fill(20,20,20, 150);
             }
             //stroke(153);
             noStroke();
