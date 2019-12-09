@@ -13,7 +13,7 @@ const About = () => {
           markdownRemark(frontmatter: { path: { eq: "/about" } }) {
                 html
             }
-            placeholderImage: file(relativePath: { eq: "gray_rect.png" }) {
+            placeholderImage: file(relativePath: { eq: "aboutimg.png" }) {
               childImageSharp {
                   fluid(maxWidth: 758) {
                       ...GatsbyImageSharpFluid
