@@ -9,7 +9,7 @@ const Team = () => (
   <StaticQuery
     query={graphql`
       {
-        allFile(filter: {relativePath: {eq: "gray_rect.png"}}) {
+        allFile(filter: {relativePath: {eq: "final.jpg"}}) {
           edges {
             node {
               childImageSharp {

@@ -2,7 +2,7 @@
 path: "/about"
 date: "2019-09-22"
 title: "About Project"
-featuredImage: ../images/aboutimgage.png
+featuredImage: ../images/aboutimg.png
 ---
 Interactive signalling is an analogue of pollution awareness. This project visualizes invisible signals such as those we emit by carrying around our smartphones. The aim of our project is to sensitize and raise awareness of pollution.
 
