@@ -47,7 +47,7 @@ window.addEventListener(eventName, function(e) {
 function setup() {
     noLoop();
     createCanvas(windowWidth, windowHeight);
-    background(255);
+    background(0);
     ref.on('value', function(dataCallback){
         console.log(dataCallback.val());
         numOfUsers = dataCallback.val().numOfUsers;
