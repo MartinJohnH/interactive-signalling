@@ -2,32 +2,24 @@ import React from "react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { graphql, useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
 
-const Image = () => {
-  const data = useStaticQuery(graphql`
-      query {
-          placeholderImage: file(relativePath: { eq: "gray_rect.png" }) {
-              childImageSharp {
-                  fluid(maxWidth: 738) {
-                      ...GatsbyImageSharpFluid
-                  }
-              }
-          }
-      }
-  `)
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
-}
 
 const IndexPage = () => (
-  <Layout pageType="homepage">
-    <SEO title="Interactive Signalling" />
-    <div className="home-image">
-        <Image/>
+  <div>
+    <div className="vimeo-wrapper">
+      <iframe title="Interactive Signalling"
+              src="https://player.vimeo.com/video/378418710?autoplay=1&loop=1&color=ffffff&title=0&byline=0&portrait=0"
+              frameBorder="0" allow="autoplay; fullscreen"></iframe>
     </div>
-  </Layout>
+    <Layout pageType="homepage">
+      <SEO title="Interactive Signalling" />
+      <div className="home-image">
+        {/*<iframe src="https://player.vimeo.com/video/378418710?color=ffffff&title=0&byline=0&portrait=0" width="640"*/}
+        {/*        height="360" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe>*/}
+      </div>
+    </Layout>
+  </div>
 )
 
 export default IndexPage

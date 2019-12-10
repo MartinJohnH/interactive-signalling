@@ -14,7 +14,7 @@ const BlogPost = ({ data }) => {
         <Img className="blog-post-image" fluid={data.markdownRemark.frontmatter.featuredImage.childImageSharp.fluid} />
         <div className="dotted-line"/>
         <div
-          className="blog-post-content"
+          className="blog-post-content white-text"
           dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
         />
         <div>

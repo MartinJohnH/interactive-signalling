@@ -13,7 +13,7 @@ const About = () => {
           markdownRemark(frontmatter: { path: { eq: "/about" } }) {
                 html
             }
-            placeholderImage: file(relativePath: { eq: "aboutimg.png" }) {
+            placeholderImage: file(relativePath: { eq: "allthree.png" }) {
               childImageSharp {
                   fluid(maxWidth: 758) {
                       ...GatsbyImageSharpFluid
@@ -27,7 +27,7 @@ const About = () => {
           <SEO title="About"/>
           <Img className="about-image" fluid={data.placeholderImage.childImageSharp.fluid} />
           <div
-            className="about-content"
+            className="about-content white-text"
             dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
           />
         </Layout>
