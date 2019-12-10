@@ -9,7 +9,7 @@ const Team = () => (
   <StaticQuery
     query={graphql`
       {
-        allFile(filter: {relativePath: {eq: "final.jpg"}}) {
+        allFile(filter: {relativePath: {eq: "VSStudioFeature.jpg"}}) {
           edges {
             node {
               childImageSharp {
@@ -45,7 +45,7 @@ const Team = () => (
         <Img className="about-image" fluid={data.allFile.edges[0].node.childImageSharp.fluid} />
         <div className="about-content">
           {data.allMarkdownRemark.edges.map((edge, index) =>
-            <a key={index} className="card" href="" target="_blank" rel="noopener">
+            <div key={index} className="card">
               <div>
                 <div className="purple-line"/>
               </div>
@@ -55,7 +55,7 @@ const Team = () => (
                 <p>{edge.node.excerpt}</p>
                 <span className="more">{console.log(edge.node.frontmatter)}</span>
               </div>
-            </a>
+            </div>
           )}
         </div>
       </Layout>
